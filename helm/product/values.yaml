@@ -1,0 +1,16 @@
+replicaCount: 2
+
+image:
+  repository: <ECR_PRODUCT>
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 8081
+
+config:
+  APP_ENV: production
+
+secret:
+  DB_PASSWORD: myproductpassword

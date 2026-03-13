@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+spec:
+  type: {{ .Values.service.type }}      # Service type (ClusterIP, NodePort, etc.)
+  selector:
+    app: user
+  ports:
+    - port: {{ .Values.service.port }}  # Service port
+      targetPort: 8082                  # Container port

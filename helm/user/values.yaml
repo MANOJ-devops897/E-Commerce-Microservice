@@ -1,0 +1,16 @@
+replicaCount: 2                      # Number of pods
+
+image:
+  repository: <ECR_USER>             # Docker image repository URL for User service
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP                     # Service type
+  port: 8082                          # Service port for User
+
+config:
+  APP_ENV: production                 # Environment variable for app
+
+secret:
+  DB_PASSWORD: myuserpassword         # Secret for sensitive data

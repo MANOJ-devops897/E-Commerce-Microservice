@@ -1,0 +1,16 @@
+replicaCount: 2                     # Number of pods
+
+image:
+  repository: <ECR_ORDER>          # Docker image repository URL
+  tag: latest                       # Image tag
+  pullPolicy: Always                # Always pull latest image
+
+service:
+  type: ClusterIP                   # K8s service type
+  port: 8080                        # Service port
+
+config:
+  APP_ENV: production               # Environment variables for app
+
+secret:
+  DB_PASSWORD: mypassword           # Secret for sensitive data:wq:

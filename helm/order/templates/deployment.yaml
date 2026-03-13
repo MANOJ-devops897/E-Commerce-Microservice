@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}     # Number of pods
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+        - name: order-container
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}" # Docker image
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:                       # Environment variables from ConfigMap
+                name: order-config
+            - secretRef:                           # Secrets from Secret
+                name: order-secret

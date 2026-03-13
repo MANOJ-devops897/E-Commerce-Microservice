@@ -1,0 +1,5 @@
+apiVersion: v2
+name: user-chart                     # Chart name for User microservice
+description: Helm chart for User microservice
+version: 0.1.0
+appVersion: "1.0"
